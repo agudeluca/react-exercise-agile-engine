@@ -1,7 +1,7 @@
-import { all,fork } from 'redux-saga/effects';
-import { fileZone }  from 'redux/fileZone/saga'
+import { all, fork } from 'redux-saga/effects';
+import { fileZone } from 'redux/fileZone/saga';
 export default function* rootSaga() {
-   yield all([
+  yield all([
     fork(fileZone),
-   ]);
+  ]);
 }
