@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
-import './App.css';
-import FileZone from 'views/file-zone';
 import { title } from 'constants/app';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from 'store';
+import FileZone from 'views/file-zone';
+
+import './App.css';
+
 class App extends Component {
   render() {
     return (

@@ -1,11 +1,42 @@
-const fileZone = {
+
+type GroupName =
+  | 'INLINE_STYLE_BUTTONS'
+  | 'BLOCK_TYPE_BUTTONS'
+  | 'LINK_BUTTONS'
+  | 'BLOCK_TYPE_DROPDOWN'
+  | 'HISTORY_BUTTONS'
+  | 'IMAGE_BUTTON';
+
+interface IStyleConfig {
+  label: string;
+  style: string;
+  className?: string;
+}
+
+type StyleConfigList = IStyleConfig[];
+
+interface IFileZone {
+  EDITOR_CONFIG: {
+    display: GroupName[],
+    INLINE_STYLE_BUTTONS: StyleConfigList;
+    BLOCK_TYPE_DROPDOWN: StyleConfigList;
+    BLOCK_TYPE_BUTTONS: StyleConfigList;
+  }
+  FORMAT_HTML: string,
+  FORMAT_MARKDOWN: string,
+  MOCK_TEXT: string
+}
+const fileZone: IFileZone = {
   EDITOR_CONFIG: {
     display: ['INLINE_STYLE_BUTTONS'],
+    BLOCK_TYPE_BUTTONS: [],
+    BLOCK_TYPE_DROPDOWN: [],
     INLINE_STYLE_BUTTONS: [
       { label: 'Bold', style: 'BOLD', className: 'custom-css-class' },
       { label: 'Italic', style: 'ITALIC' },
       { label: 'Underline', style: 'UNDERLINE' }
     ],
+
   },
   FORMAT_HTML: 'html',
   FORMAT_MARKDOWN: 'markdown',

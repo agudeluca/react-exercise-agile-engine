@@ -1,7 +1,7 @@
 
 import {createSelector} from 'reselect';
 
-export const getFileZoneState = (state) => state.fileZone;
+export const getFileZoneState = (state: any) => state.fileZone;
 
 export const getSimilarWorldsSelector = createSelector(
   getFileZoneState,

@@ -2,13 +2,24 @@ import React, { Component } from 'react';
 import './FileZone.css';
 import fileZone from 'constants/fileZone';
 import RichTextEditor from 'react-rte';
-import PropTypes from 'prop-types';
-class FileZone extends Component {
-  static state = {
-    value: RichTextEditor.createValueFromString(fileZone.MOCK_TEXT, fileZone.FORMAT_HTML),
+
+
+interface Props {
+  similarWords: [],
+  onChange?: Function,
+  getSimilarWorlds: Function,
+}
+interface State { value: any, selectedWorld?: string }
+
+class FileZone extends Component<Props, State> {
+  constructor(props: Props){
+    super(props);
+    this.state = {
+      value: RichTextEditor.createValueFromString(fileZone.MOCK_TEXT, fileZone.FORMAT_HTML),
+    };
   }
 
-  onChange = (value) => {
+  onChange = (value: any) => {
     this.setState({ value });
     if (this.props.onChange) {
       this.props.onChange(
@@ -17,11 +28,11 @@ class FileZone extends Component {
     }
   };
   handleDoubleClick = () => {
-    const selection = window.getSelection().toString();
+    const selection = window.getSelection()!.toString();
     this.setState({ selectedWorld: selection });
     selection && this.props.getSimilarWorlds(selection);
   }
-  replaceSelection = event => {
+  replaceSelection = (event: any) => {
     const { similarword } = event.target.dataset;
     const { selectedWorld } = this.state;
     const currentValue = this.state.value.toString(fileZone.FORMAT_MARKDOWN);
@@ -38,6 +49,7 @@ class FileZone extends Component {
     );
   }
   render() {
+    console.log(this);
     return (
       <div>
         <div onDoubleClick={this.handleDoubleClick}>
@@ -54,10 +66,6 @@ class FileZone extends Component {
     );
   }
 }
-FileZone.propTypes = {
-  similarWords: PropTypes.array,
-  onChange: PropTypes.func,
-  getSimilarWorlds: PropTypes.func,
-};
+
 
 export default FileZone;

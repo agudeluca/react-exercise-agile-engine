@@ -1,6 +1,15 @@
 module.exports = {
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "parser": "babel-eslint",
+  "extends": [
+    'react-app',
+    'airbnb',
+    'plugin:import/errors',
+    'plugin:import/typescript',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'prettier',
+    'prettier/react',
+  ],
+  "parser": "@typescript-eslint/parser",
     "env": {
         "browser": true,
         "es6": true
